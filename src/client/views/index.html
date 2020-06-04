@@ -9,25 +9,29 @@
     <body>
 
         <header>
-            <div class="">
-                Logo
-            </div>
-            <div class="">
-                navigation
+            <div class="logo">
+                <img>
             </div>
         </header>
 
         <main>
             <section>
+                <h1>Sentiment Analysis</h1>
+                <div class="description"><p>Extracting sentiment from a piece of text such as a tweet, a review or an article can provide us with valuable insight about the author's emotions and perspective.</p>
+                    <p>The tone can be <b>positive</b>,<b> neutral</b> or <b>negative</b>, and whether the text is <b>subjective</b> (meaning it's reflecting the author's opinion) or <b>objective </b>(meaning it's expressing a fact). Our Sentiment Analysis endpoint is built exactly for this purpose. <a href="https://docs.aylien.com/" target="_blank">'Aylien'</a></p>
+                </div>
+                <div class="button-instructions"><button class="button">Show instruction</button></div>
                 <form class="" onsubmit="return Client.handleSubmit(event)">
-                    <input id="name" type="text" name="input" value=""  placeholder="Name">
+                    <input id="name" type="text" name="input" value=""  placeholder="Insert text or url here">
                     <input type="submit" name="" value="submit" onclick="return Client.handleSubmit(event)" onsubmit="return handleSubmit(event)">
                 </form>
             <section>
 
             <section>
-                <strong>Form Results:</strong>
+               <p> <strong>Result of Analysis:</strong></p>
+
                 <div id='result'></div>
+
             </section>
         </main>
 

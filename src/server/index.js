@@ -44,19 +44,42 @@ app.get('/', function (req, res) {
 });
 
 app.get('/apicall', (req, res) => {
-  textapi.sentiment(
-    {
-      mode: 'document',
-      text: req.query.input,
-    },
-    function (error, response) {
-      if (error === null) {
-        res.send(response);
-      } else {
-        console.log(error);
-      }
+  // Function to check if string is an url
+  const validURL = (str) => {
+    var pattern = new RegExp(
+      '^(https?:\\/\\/)?' + // protocol
+      '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // domain name
+      '((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
+      '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // port and path
+      '(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
+        '(\\#[-a-z\\d_]*)?$',
+      'i'
+    ); // fragment locator
+    return !!pattern.test(str);
+  };
+
+  // Function to determine which configuration object to use
+  const whatToQuery = () => {
+    if (validURL(req.query.input)) {
+      return {
+        mode: 'document',
+        url: req.query.input,
+      };
+    } else {
+      return {
+        mode: 'tweet',
+        text: req.query.input,
+      };
     }
-  );
+  };
+
+  textapi.sentiment(whatToQuery(), (error, response) => {
+    if (error === null) {
+      res.send(response);
+    } else {
+      console.log(error);
+    }
+  });
 });
 
 app.post('/database', (req, res) => {
@@ -76,12 +99,6 @@ app.post('/database', (req, res) => {
   newData.subjectivity_confidence = subjectivity_confidence;
 
   dataAPIResponse.push(newData);
-
-  // dataAPIResponse.polarity = polarity;
-  // dataAPIResponse.subjectivity = subjectivity;
-  // dataAPIResponse.text = text;
-  // dataAPIResponse.polarity_confidence = polarity_confidence;
-  // dataAPIResponse.subjectivity_confidence = subjectivity_confidence;
 
   res.send(dataAPIResponse);
 });
