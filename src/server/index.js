@@ -110,7 +110,7 @@ app.get('/all', (req, res) => {
 });
 
 // designates what port the app will listen to for incoming requests
-const port = 3000;
+const port = 8081;
 
 app.listen(port, () => {
   console.log(`'App running on port ${port}`);

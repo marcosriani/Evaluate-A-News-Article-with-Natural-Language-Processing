@@ -1,10 +1,15 @@
+import { test } from './test';
+
 function handleSubmit(event) {
   event.preventDefault();
 
-  // Hide instructions paragraphs
+  // Hide instructions paragraphs and result title
   const instructions = document.querySelector('.description');
   const buttonShowInstructions = document.querySelector('.button');
+  const resultTitle = document.querySelector('.result-title');
+
   instructions.style.display = 'none';
+  resultTitle.style.display = 'block';
 
   instructions.style.display === 'none'
     ? (buttonShowInstructions.style.display = 'block')
@@ -16,7 +21,7 @@ function handleSubmit(event) {
 
   Client.checkForName(formText);
 
-  const url = 'http://localhost:3000/apicall?input=';
+  const url = 'http://localhost:8081/apicall?input=';
 
   // Query data with a GET request
   const apiCall = async (url = '', textOrUrlAnalyser) => {
@@ -70,7 +75,7 @@ function handleSubmit(event) {
   };
 
   const updateUI = async () => {
-    const result = await fetch('http://localhost:3000/all');
+    const result = await fetch('http://localhost:8081/all');
     try {
       const returnedData = await result.json();
       const latestData = returnedData[returnedData.length - 1];
@@ -102,7 +107,7 @@ function handleSubmit(event) {
 
   apiCall(url, formText)
     .then((data) => {
-      postData('http://localhost:3000/database', data);
+      postData('http://localhost:8081/database', data);
     })
     .then(() => {
       updateUI();
