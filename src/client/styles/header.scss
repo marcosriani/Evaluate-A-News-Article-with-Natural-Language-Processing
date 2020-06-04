@@ -1,5 +1,16 @@
 header {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 40px;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 40px 0 40px;
+}
+
+.nav {
+  padding-right: 40px;
+  display: grid;
+  align-items: center;
+}
+.nav-link {
+  padding: 10px;
+  text-decoration: none;
+  color: rgba(0, 92, 134, 0.925);
 }

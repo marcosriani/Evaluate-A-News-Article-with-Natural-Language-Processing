@@ -73,6 +73,7 @@ app.get('/apicall', (req, res) => {
     }
   };
 
+  // Calling Sentiment API endpoint
   textapi.sentiment(whatToQuery(), (error, response) => {
     if (error === null) {
       res.send(response);
@@ -82,6 +83,7 @@ app.get('/apicall', (req, res) => {
   });
 });
 
+// Post route
 app.post('/database', (req, res) => {
   const {
     polarity,
@@ -98,18 +100,20 @@ app.post('/database', (req, res) => {
   newData.polarity_confidence = polarity_confidence;
   newData.subjectivity_confidence = subjectivity_confidence;
 
+  // pushing data to the database variable
   dataAPIResponse.push(newData);
 
   res.send(dataAPIResponse);
 });
 
+// GET route that request all data from the database
 app.get('/all', (req, res) => {
   console.log(dataAPIResponse);
 
   res.send(dataAPIResponse);
 });
 
-// designates what port the app will listen to for incoming requests
+// Designates what port the app will listen to for incoming requests
 const port = 8081;
 
 app.listen(port, () => {

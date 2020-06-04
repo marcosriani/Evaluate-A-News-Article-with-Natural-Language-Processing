@@ -1,5 +1,3 @@
-import { test } from './test';
-
 function handleSubmit(event) {
   event.preventDefault();
 
@@ -15,11 +13,12 @@ function handleSubmit(event) {
     ? (buttonShowInstructions.style.display = 'block')
     : null;
 
-  // check what text was put into the form field
+  //  text was put into the form field
   const formField = document.getElementById('name');
   const formText = formField.value;
 
-  Client.checkForName(formText);
+  // Execute button clicked function
+  Client.buttonClicked(formText);
 
   const url = 'http://localhost:8081/apicall?input=';
 
@@ -37,7 +36,7 @@ function handleSubmit(event) {
     }
   };
 
-  // Post request
+  // Post data returned from API to a database variable in server.js
   const postData = async (url = '', data = {}) => {
     const response = await fetch(url, {
       method: 'POST',
@@ -105,6 +104,7 @@ function handleSubmit(event) {
     }
   };
 
+  // Calling the GET, POST request and GET request to update UI
   apiCall(url, formText)
     .then((data) => {
       postData('http://localhost:8081/database', data);

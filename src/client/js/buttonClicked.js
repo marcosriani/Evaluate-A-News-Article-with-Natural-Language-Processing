@@ -1,7 +1,4 @@
-function checkForName(inputText) {
-  console.log('::: Running checkForName :::', inputText);
-  let names = ['Picard', 'Janeway', 'Kirk', 'Archer', 'Georgiou'];
-
+function buttonClicked(inputText) {
   const buttonShowInstructions = document.querySelector('.button');
   const instructions = document.querySelector('.description');
 
@@ -9,10 +6,6 @@ function checkForName(inputText) {
     instructions.style.display = 'block';
     buttonShowInstructions.style.display = 'none';
   });
-
-  if (names.includes(inputText)) {
-    alert('Welcome, Captain!');
-  }
 }
 
-export { checkForName };
+export { buttonClicked };
