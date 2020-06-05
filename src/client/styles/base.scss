@@ -13,7 +13,8 @@ main {
   h1 {
     margin: 10px 15px 0 0;
     text-align: center;
-    padding: 25px;
+    padding-top: 30px;
+    padding-bottom: 25px;
     font-size: 27px;
   }
 }
@@ -85,5 +86,26 @@ section {
 section {
   p strong {
     display: none;
+  }
+}
+section {
+  .text-too-short {
+    color: red;
+    border: 1px solid rgba(1, 129, 161, 0.452);
+    background-color: rgba(196, 232, 241, 0.452);
+    width: 280px;
+    margin-bottom: 20px;
+    justify-content: center;
+    margin: 15px auto;
+    display: none;
+    height: 50px;
+    align-content: center;
+  }
+}
+section {
+  .text-too-short p {
+    justify-content: center;
+    align-content: center;
+    height: 100%;
   }
 }

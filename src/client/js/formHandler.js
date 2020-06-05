@@ -5,6 +5,7 @@ function handleSubmit(event) {
   const instructions = document.querySelector('.description');
   const buttonShowInstructions = document.querySelector('.button');
   const resultTitle = document.querySelector('.result-title');
+  const containerDiv = document.querySelector('#result');
 
   instructions.style.display = 'none';
   resultTitle.style.display = 'block';
@@ -15,10 +16,10 @@ function handleSubmit(event) {
 
   //  text was put into the form field
   const formField = document.getElementById('name');
-  const formText = formField.value;
+  let formText = formField.value;
 
   // Execute button clicked function
-  Client.buttonClicked(formText);
+  Client.validatorAndButton(formText, resultTitle, containerDiv);
 
   const url = 'http://localhost:8081/apicall?input=';
 
@@ -56,7 +57,6 @@ function handleSubmit(event) {
   };
 
   // Update the UI
-  const containerDiv = document.querySelector('#result');
   const createWrapperElement = (title, elementClass) => {
     //   Wrapper div
     const divElement = document.createElement('div');
@@ -105,13 +105,19 @@ function handleSubmit(event) {
   };
 
   // Calling the GET, POST request and GET request to update UI
-  apiCall(url, formText)
-    .then((data) => {
-      postData('http://localhost:8081/database', data);
-    })
-    .then(() => {
-      updateUI();
-    });
+  // Making sure the input is not just numbers
+  if (formText.match(/^[0-9]+$/) && formText.length > 10) {
+    alert('Error, too many numerical characters');
+    location.reload();
+  } else {
+    apiCall(url, formText)
+      .then((data) => {
+        postData('http://localhost:8081/database', data);
+      })
+      .then(() => {
+        updateUI();
+      });
+  }
 }
 
 export { handleSubmit };
