@@ -21,7 +21,7 @@ function handleSubmit(event) {
   // Execute button clicked function
   Client.validatorAndButton(formText, resultTitle, containerDiv);
 
-  const url = 'http://localhost:8081/apicall?input=';
+  const url = 'http://localhost:3000/apicall?input=';
 
   // Query data with a GET request
   const apiCall = async (url = '', textOrUrlAnalyser) => {
@@ -74,7 +74,7 @@ function handleSubmit(event) {
   };
 
   const updateUI = async () => {
-    const result = await fetch('http://localhost:8081/all');
+    const result = await fetch('http://localhost:3000/all');
     try {
       const returnedData = await result.json();
       const latestData = returnedData[returnedData.length - 1];
@@ -112,7 +112,7 @@ function handleSubmit(event) {
   } else {
     apiCall(url, formText)
       .then((data) => {
-        postData('http://localhost:8081/database', data);
+        postData('http://localhost:3000/database', data);
       })
       .then(() => {
         updateUI();

@@ -28,6 +28,19 @@ module.exports = {
         test: /\.scss$/,
         use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
       },
+      {
+        // ASSET LOADER
+        test: /\.(woff|woff2|ttf|eot)$/,
+        loader: 'file-loader',
+      },
+      {
+        //IMAGE LOADER
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        loader: 'file-loader',
+        options: {
+          name: '[path][name].[ext]?[contenthash]',
+        },
+      },
     ],
   },
   plugins: [

@@ -43,7 +43,7 @@ app.get('/', function (req, res) {
   res.sendFile('dist/index.html');
 });
 
-app.get('/apicall', (req, res) => {
+app.get('/apicall', async (req, res) => {
   // Function to check if string is an url
   const validURL = (str) => {
     var pattern = new RegExp(
@@ -74,7 +74,7 @@ app.get('/apicall', (req, res) => {
   };
 
   // Calling Sentiment API endpoint
-  textapi.sentiment(whatToQuery(), (error, response) => {
+  await textapi.sentiment(whatToQuery(), (error, response) => {
     if (error === null) {
       res.send(response);
     } else {
@@ -114,7 +114,7 @@ app.get('/all', (req, res) => {
 });
 
 // Designates what port the app will listen to for incoming requests
-const port = 8081;
+const port = 3000;
 
 app.listen(port, () => {
   console.log(`'App running on port ${port}`);
