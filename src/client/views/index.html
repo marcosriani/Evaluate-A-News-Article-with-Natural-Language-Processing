@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link
         class="logo-window"
-        href="../../../images/coding.png"
+        href="../../../assets/coding.png"
       rel="shortcut icon"
       type="image/x-icon"
     />
@@ -16,7 +16,7 @@
 
         <header>
             <div class="logo">
-                <img class="logo-page" src="../../../images/coding.png" />
+                <img class="logo-page" src="../../../assets/coding.png" />
               </div>
               <nav class="nav">
                   <ul>
@@ -53,11 +53,25 @@
               ©Copyright 2020 by Marcos Riani
             </p>
             <div>
-              <a href="https://www.linkedin.com/in/marcosriani/" target="_blank"><img  src="../../../images/linkedin.png" alt="Linkedin" class="linkedin" /></a>
-              <a href="https://github.com/marcosriani" target="_blank"><img src="../../../images/github.png"  alt="GitHub" class="github"/></a>
-              <a href="https://twitter.com/marcos_riani" target="_blank"><img src="../../../images/twitter.png" alt="Twitter" class="twitter" /></a>
+              <a href="https://www.linkedin.com/in/marcosriani/" target="_blank"><img  src="../../../assets/linkedin.png" alt="Linkedin" class="linkedin" /></a>
+              <a href="https://github.com/marcosriani" target="_blank"><img src="../../../assets/github.png"  alt="GitHub" class="github"/></a>
+              <a href="https://twitter.com/marcos_riani" target="_blank"><img src="../../../assets/twitter.png" alt="Twitter" class="twitter" /></a>
             </div>
           </footer>
 
+
+          
+          <script>
+            if ('serviceWorker' in navigator){
+                navigator.serviceWorker.register('/service-worker.js').then(function(registration){
+                console.log('service worker registration succeeded:',registration);
+            },
+                function(error){
+                    console.log('service worker registration failed:',error);
+            });
+            } else{
+                console.log('service workers are not supported.');
+            }
+        </script>
     </body>
 </html>

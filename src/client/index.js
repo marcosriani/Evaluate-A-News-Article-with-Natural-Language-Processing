@@ -9,9 +9,9 @@ import './styles/form.scss';
 import './styles/footer.scss';
 import './styles/header.scss';
 
-import '../../images/coding.png';
-import '../../images/github.png';
-import '../../images/linkedin.png';
-import '../../images/twitter.png';
+import '../../assets/coding.png';
+import '../../assets/github.png';
+import '../../assets/linkedin.png';
+import '../../assets/twitter.png';
 
 export { validatorAndButton, handleSubmit };
