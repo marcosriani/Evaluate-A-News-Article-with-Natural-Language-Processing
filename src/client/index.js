@@ -9,15 +9,9 @@ import './styles/form.scss';
 import './styles/footer.scss';
 import './styles/header.scss';
 
-import codingImg from '../../images/coding.png';
-import githubImg from '../../images/github.png';
-import linkedinImg from '../../images/linkedin.png';
-import twitterImg from '../../images/twitter.png';
-
-// document.querySelector('.logo-window').href = codingImg;
-// document.querySelector('.logo-page').src = codingImg;
-// document.querySelector('.github').src = githubImg;
-// document.querySelector('.twitter').src = twitterImg;
-// document.querySelector('.linkedin').src = linkedinImg;
+import '../../images/coding.png';
+import '../../images/github.png';
+import '../../images/linkedin.png';
+import '../../images/twitter.png';
 
 export { validatorAndButton, handleSubmit };

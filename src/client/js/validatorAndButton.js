@@ -3,29 +3,27 @@ function validatorAndButton(formText, resultTitle, containerDiv) {
   const textTooShortDiv = document.querySelector('.text-too-short');
   const textTooShortParagraph = document.querySelector('.text-too-short-p');
 
-  // Checking if input text is just numbers
-  if (formText.match(/^[0-9]+$/)) {
-    textTooShortDiv.style.display = 'block';
-    resultTitle.style.display = 'none';
-    containerDiv.style.display = 'none';
-    setTimeout(() => {
+  // Checking function for the user input
+  const checking = (condition) => {
+    if (condition) {
+      textTooShortParagraph.textContent = 'Text too short! Please enter text';
+      textTooShortDiv.style.display = 'block';
+      resultTitle.style.display = 'none';
+      containerDiv.style.display = 'none';
+      setTimeout(() => {
+        textTooShortDiv.style.display = 'none';
+      }, 1500);
+    } else {
+      containerDiv.style.display = 'block';
       textTooShortDiv.style.display = 'none';
-    }, 1500);
-  }
+    }
+  };
+
+  // Checking if input text is just numbers
+  checking(formText.match(/^[0-9]+$/));
 
   // Checking if input text is long enough for good results
-  if (formText.length < 35) {
-    textTooShortParagraph.textContent = 'Text too short! Please enter text';
-    textTooShortDiv.style.display = 'block';
-    resultTitle.style.display = 'none';
-    containerDiv.style.display = 'none';
-    setTimeout(() => {
-      textTooShortDiv.style.display = 'none';
-    }, 1500);
-  } else {
-    containerDiv.style.display = 'block';
-    textTooShortDiv.style.display = 'none';
-  }
+  checking(formText.length < 35);
 
   const buttonShowInstructions = document.querySelector('.button');
   const instructions = document.querySelector('.description');
