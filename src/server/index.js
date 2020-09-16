@@ -75,7 +75,7 @@ app.get('/apicall', async (req, res) => {
 
   // Calling Sentiment API endpoint
   await textapi.sentiment(whatToQuery(), (error, response) => {
-    if (error === null) {
+    if (error) {
       res.send(response);
     } else {
       console.log(error);
@@ -114,7 +114,7 @@ app.get('/all', (req, res) => {
 });
 
 // Designates what port the app will listen to for incoming requests
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 app.listen(port, () => {
   console.log(`'App running on port ${port}`);
